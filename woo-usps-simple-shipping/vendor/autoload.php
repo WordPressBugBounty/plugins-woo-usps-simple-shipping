@@ -4,4 +4,4 @@
 
 require_once __DIR__ . '/composer/autoload_real.php';
 
-return Dgm_UspsSimple_Vendors_ComposerAutoloaderInit590503fd2e2c692078f5b222c30b820c::getLoader();
+return Dgm_UspsSimple_Vendors_ComposerAutoloaderInit1f4f397761a26fe8ae34d2b8e58e6ab5::getLoader();

@@ -5,7 +5,7 @@ Requires PHP: 7.2
 Requires at least: 4.6
 Tested up to: 6.7
 WC requires at least: 5.0
-WC tested up to: 9.4
+WC tested up to: 9.5
 
 
 The USPS Simple plugin calculates rates for domestic shipping dynamically using the USPS API.
@@ -74,6 +74,9 @@ To ensure compatibility, please set the WooCommerce currency to the US dollar an
 
 
 == Changelog ==
+
+= 1.10.10 =
+* Tested with WooCommerce 9.5.
 
 = 1.10.9 =
 * Tested with WordPress 6.7, WooCommerce 9.4.
