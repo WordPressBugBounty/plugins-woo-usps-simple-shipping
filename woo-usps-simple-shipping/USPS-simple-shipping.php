@@ -3,13 +3,13 @@
  * Plugin Name: USPS Simple Shipping for Woocommerce
  * Plugin URI: http://wordpress.org/plugins/woo-usps-simple-shipping
  * Description: The USPS Simple plugin calculates rates for domestic shipping dynamically using USPS API during checkout.
- * Version: 1.10.10
+ * Version: 1.10.11
  * Author: dangoodman
  * Requires PHP: 7.2
  * Requires at least: 4.6
  * Tested up to: 6.7
  * WC requires at least: 5.0
- * WC tested up to: 9.5
+ * WC tested up to: 9.6
  * Requires Plugins: woocommerce
  */
 
