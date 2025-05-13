@@ -3,9 +3,9 @@ Contributors: dangoodman
 Tags: USPS, WooCommerce USPS Shipping, Live USPS rates
 Requires PHP: 7.2
 Requires at least: 4.6
-Tested up to: 6.7
+Tested up to: 6.8
 WC requires at least: 5.0
-WC tested up to: 9.6
+WC tested up to: 9.8
 
 
 The USPS Simple plugin calculates rates for domestic shipping dynamically using the USPS API.
@@ -74,6 +74,10 @@ To ensure compatibility, please set the WooCommerce currency to the US dollar an
 
 
 == Changelog ==
+
+= 1.11.0 =
+* Prevent PHP 8.4 warnings.
+* Tested with WordPress 6.8, WooCommerce 9.8.
 
 = 1.10.11 =
 * Tested with WooCommerce 9.6.

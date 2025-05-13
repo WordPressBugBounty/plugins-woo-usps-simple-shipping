@@ -27,7 +27,7 @@ class Services
      * @param ?callable(string $familyId, string $serviceId): bool $serviceEnabled
      * @param bool $skipInactive
      */
-    public function __construct(callable $serviceFamilyTitle = null, callable $serviceEnabled = null, bool $skipInactive = false)
+    public function __construct(?callable $serviceFamilyTitle = null, ?callable $serviceEnabled = null, bool $skipInactive = false)
     {
         $express = new ServiceFamily(
             'express_mail',

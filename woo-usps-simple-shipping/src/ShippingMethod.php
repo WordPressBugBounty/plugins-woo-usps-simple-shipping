@@ -141,7 +141,7 @@ class ShippingMethod extends \WC_Shipping_Method
 
         if (get_woocommerce_currency() !== "USD") {
             echo '<div class="error">
-				<p>'.sprintf(__('<a href="%s">Currency</a> must be set in US Dollars.', 'woo-usps-simple-shipping'), $admin_url).'</p>
+				<p>'.sprintf(__('<a href="%s">Currency</a> must be the US Dollars.', 'woo-usps-simple-shipping'), $admin_url).'</p>
 			</div>';
         }
 
@@ -153,7 +153,7 @@ class ShippingMethod extends \WC_Shipping_Method
 
         if (!$this->sender && $this->enabled === 'yes') {
             echo '<div class="error">
-				<p>'.__('The origin postcode has not been set.', 'woo-usps-simple-shipping').'</p>
+				<p>'.__('The origin zip code has not been set.', 'woo-usps-simple-shipping').'</p>
 			</div>';
         }
 

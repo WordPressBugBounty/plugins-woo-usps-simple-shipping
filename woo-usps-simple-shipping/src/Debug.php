@@ -17,26 +17,29 @@ class Debug
 {
     public static function noop(): self
     {
-        return new self(null);
+        return new self(false);
     }
 
     public static function default(string $pluginFile): self
     {
-        return new self($pluginFile);
+        $self = new self(get_option('woocommerce_shipping_debug_mode', 'no') === 'yes');
+        if ($self->enabled) {
+            $self->pluginFile = $pluginFile;
+            add_action('woocommerce_before_checkout_form', [$self, '_show']);
+            add_action('woocommerce_before_cart', [$self, '_show']);
+        }
+        return $self;
     }
 
-    private function __construct(string $pluginFile = null)
+    public static function testing(): self
     {
-        if ($pluginFile === null) {
-            return;
-        }
+        return new self(true);
+    }
 
-        $this->pluginFile = $pluginFile;
-        $this->data = new DebugData();
-        $this->enabled = 'yes' === get_option('woocommerce_shipping_debug_mode', 'no');
-        if ($this->enabled) {
-            add_action('woocommerce_before_checkout_form', [$this, '_show']);
-            add_action('woocommerce_before_cart', [$this, '_show']);
+    private function __construct(bool $enabled) {
+        $this->enabled = $enabled;
+        if ($enabled) {
+            $this->data = new DebugData();
         }
     }
 
@@ -184,11 +187,12 @@ class Debug
 
     public function format(): string
     {
+        if (!$this->enabled) return '';
         return $this->data->format();
     }
 
     /** @var bool */
-    private $enabled = false;
+    private $enabled;
 
     /** @var string */
     private $pluginFile;
