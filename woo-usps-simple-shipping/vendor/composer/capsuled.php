@@ -6,9 +6,9 @@
       'Dgm\\WcTools\\WcTools' => 'Dgm\\UspsSimple\\Vendors\\Dgm\\WcTools\\WcTools',
       'DgmWpPluginBootstrapGuard' => 'Dgm_UspsSimple_Vendors_DgmWpPluginBootstrapGuard',
       'DgmWpDismissibleNotices' => 'Dgm_UspsSimple_Vendors_DgmWpDismissibleNotices',
-      'Composer\\Autoload\\ComposerStaticInitee0b2c7216a754e8ab2b608f7c30155b' => 'Dgm\\UspsSimple\\Vendors\\Composer\\Autoload\\ComposerStaticInitee0b2c7216a754e8ab2b608f7c30155b',
+      'Composer\\Autoload\\ComposerStaticInit59e456511c0990b49636001ee00b9848' => 'Dgm\\UspsSimple\\Vendors\\Composer\\Autoload\\ComposerStaticInit59e456511c0990b49636001ee00b9848',
       'Composer\\Autoload\\ClassLoader' => 'Dgm\\UspsSimple\\Vendors\\Composer\\Autoload\\ClassLoader',
-      'ComposerAutoloaderInitee0b2c7216a754e8ab2b608f7c30155b' => 'Dgm_UspsSimple_Vendors_ComposerAutoloaderInitee0b2c7216a754e8ab2b608f7c30155b',
+      'ComposerAutoloaderInit59e456511c0990b49636001ee00b9848' => 'Dgm_UspsSimple_Vendors_ComposerAutoloaderInit59e456511c0990b49636001ee00b9848',
     ),
     'func' => 
     array (
@@ -24,9 +24,9 @@
       'Dgm\\UspsSimple\\Vendors\\Dgm\\WcTools\\WcTools' => 'Dgm\\WcTools\\WcTools',
       'Dgm_UspsSimple_Vendors_DgmWpPluginBootstrapGuard' => 'DgmWpPluginBootstrapGuard',
       'Dgm_UspsSimple_Vendors_DgmWpDismissibleNotices' => 'DgmWpDismissibleNotices',
-      'Dgm\\UspsSimple\\Vendors\\Composer\\Autoload\\ComposerStaticInitee0b2c7216a754e8ab2b608f7c30155b' => 'Composer\\Autoload\\ComposerStaticInitee0b2c7216a754e8ab2b608f7c30155b',
+      'Dgm\\UspsSimple\\Vendors\\Composer\\Autoload\\ComposerStaticInit59e456511c0990b49636001ee00b9848' => 'Composer\\Autoload\\ComposerStaticInit59e456511c0990b49636001ee00b9848',
       'Dgm\\UspsSimple\\Vendors\\Composer\\Autoload\\ClassLoader' => 'Composer\\Autoload\\ClassLoader',
-      'Dgm_UspsSimple_Vendors_ComposerAutoloaderInitee0b2c7216a754e8ab2b608f7c30155b' => 'ComposerAutoloaderInitee0b2c7216a754e8ab2b608f7c30155b',
+      'Dgm_UspsSimple_Vendors_ComposerAutoloaderInit59e456511c0990b49636001ee00b9848' => 'ComposerAutoloaderInit59e456511c0990b49636001ee00b9848',
     ),
     'func' => 
     array (
