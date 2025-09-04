@@ -1,11 +1,12 @@
-﻿=== USPS Simple Shipping for Woocommerce ===
+=== USPS Simple Shipping for Woocommerce ===
 Contributors: dangoodman
 Tags: USPS, WooCommerce USPS Shipping, Live USPS rates
 Requires PHP: 7.2
 Requires at least: 4.6
 Tested up to: 6.8
 WC requires at least: 5.0
-WC tested up to: 9.9
+WC tested up to: 10.1
+Stable tag: 1.11.2
 
 
 The USPS Simple plugin calculates rates for domestic shipping dynamically using the USPS API.
@@ -74,6 +75,9 @@ To ensure compatibility, please set the WooCommerce currency to the US dollar an
 
 
 == Changelog ==
+
+= 1.11.2 =
+* Tested with WooCommerce 10.1.
 
 = 1.11.1 =
 * Tested with WooCommerce 9.9.
@@ -244,7 +248,7 @@ To ensure compatibility, please set the WooCommerce currency to the US dollar an
 * Fix - Incorrect work of "Quote regular items by weight" with zero size items.
 
 = 1.2.2 =
-* Removed deprecated USPS services: 
+* Removed deprecated USPS services:
   Priority Mail Regional Rate Box C;
   Priority Mail Regional Rate Box C, Hold For Pickup;
 * Added First-Class Mail Metered Letter;
