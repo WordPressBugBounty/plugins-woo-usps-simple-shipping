@@ -5,12 +5,9 @@ declare(strict_types=1);
 
 namespace Dgm\UspsSimple;
 
-use Dgm\UspsSimple\Calc\Pair;
 use Dgm\UspsSimple\Calc\Product;
 use Dgm\UspsSimple\Calc\Request;
-use Dgm\UspsSimple\Debug\XmlPrettyPrinter;
 use WC_Product;
-use WP_Error;
 
 
 class Debug
@@ -105,43 +102,10 @@ class Debug
         $this->data->package = $package;
     }
 
-    /**
-     * @param Pair<string> $requests
-     */
-    public function recordRequests(Pair $requests): void
-    {
-        if (!$this->enabled) return;
-        $this->data->requests = $requests;
-    }
-
     public function recordTheRequest(Request $request): void
     {
         if (!$this->enabled) return;
         $this->data->request = $request;
-    }
-
-    /**
-     * @param Pair<WP_Error|array|string> $responses
-     */
-    public function recordResponses(Pair $responses): void
-    {
-        if (!$this->enabled) return;
-
-        $this->data->responses = $responses->map(function($r) {
-            if ($r instanceof WP_Error) {
-                return ['errors' => $r->get_error_messages()];
-            }
-            if (is_array($r)) {
-                unset($r['http_response']);
-            }
-            return $r;
-        });
-    }
-
-    public function recordCombinedResponse(string $response): void
-    {
-        if (!$this->enabled) return;
-        $this->data->combinedResponse = $response;
     }
 
     public function recordRates(array $shown): void
@@ -216,56 +180,13 @@ class DebugData
     /** @var mixed */
     public $package;
 
-    /** @var Pair<string>|null */
-    public $requests;
-
     /** @var Request|null */
     public $request;
-
-    /** @var Pair<string|array>|null */
-    public $responses;
-
-    /** @var string */
-    public $combinedResponse;
-
 
     /** @return string */
     public function format(): string
     {
-        $prettify = function($x) {
-            return XmlPrettyPrinter::tryPettyPrint($x);
-        };
-
-        $map = function($p, callable $f) {
-            if ($p instanceof Pair) {
-                return $p->map($f);
-            }
-            return $p;
-        };
-
-
-        $copy = clone($this);
-
-        $copy->requests = $map($copy->requests, $prettify);
-
-        $copy->responses = $map($copy->responses, function($r) use ($prettify) {
-
-            if (is_array($r)) {
-                if (isset($r['body'])) {
-                    $r['body'] = $prettify($r['body']);
-                }
-            }
-            else if (is_string($r)) {
-                $r = $prettify($r);
-            }
-
-            return $r;
-        });
-
-
-        $copy->combinedResponse = $prettify($copy->combinedResponse);
-
-        $props = get_object_vars($copy);
+        $props = get_object_vars($this);
 
         // Suppress the 'var_export does not handle circular references' warning. We are ok
         // with NULL's in place of such refs.

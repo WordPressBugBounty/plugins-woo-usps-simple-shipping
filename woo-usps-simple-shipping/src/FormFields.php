@@ -8,12 +8,12 @@ use Dgm\UspsSimple\Model\Services;
 
 class FormFields
 {
-    public static function build(string $defaultUspsApiUserId): array
+    public static function build(bool $servicesEnabledByDefault): array
     {
-        return self::options($defaultUspsApiUserId) + self::uspsServices();
+        return self::options() + self::uspsServices($servicesEnabledByDefault);
     }
 
-    private static function options(string $defaultUspsApiUserId): array
+    private static function options(): array
     {
         return [
             'enabled'         => [
@@ -23,27 +23,27 @@ class FormFields
                 'default' => 'yes',
             ],
             'sender'          => [
-                'title'       => __('Postcode', 'woo-usps-simple-shipping'),
+                'title'       => __('Origin ZIP', 'woo-usps-simple-shipping'),
                 'type'        => 'text',
-                'description' => __('Enter the origin postcode.', 'woo-usps-simple-shipping'),
+                'description' => __('Enter the shipping origin ZIP code .', 'woo-usps-simple-shipping'),
                 'default'     => '',
                 'placeholder' => get_option('woocommerce_store_postcode'),
                 'desc_tip'    => true,
             ],
-            'user_id'         => [
-                'title'       => __('User ID', 'woo-usps-simple-shipping'),
-                'type'        => 'text',
-                'description' => __('Enter user id, which was provided after registering at USPS website, or use our id.', 'woo-usps-simple-shipping'),
-                'default'     => '',
-                'placeholder' => $defaultUspsApiUserId,
-                'desc_tip'    => true,
-            ],
-            'commercial_rate' => [
-                'title'   => __('Commercial rates', 'woo-usps-simple-shipping'),
-                'type'    => 'checkbox',
-                'label'   => 'Use USPS Commercial Pricing if available',
-                'default' => 'yes',
-            ],
+//            'user_id'         => [
+//                'title'       => __('User ID', 'woo-usps-simple-shipping'),
+//                'type'        => 'text',
+//                'description' => __('Enter user id, which was provided after registering at USPS website, or use our id.', 'woo-usps-simple-shipping'),
+//                'default'     => '',
+//                'placeholder' => $defaultUspsApiUserId,
+//                'desc_tip'    => true,
+//            ],
+//            'commercial_rate' => [
+//                'title'   => __('Commercial rates', 'woo-usps-simple-shipping'),
+//                'type'    => 'checkbox',
+//                'label'   => 'Use USPS Commercial Pricing if available',
+//                'default' => 'yes',
+//            ],
             'group_by_weight' => [
                 'title'       => __('Packing', 'woo-usps-simple-shipping'),
                 'type'        => 'checkbox',
@@ -59,11 +59,11 @@ class FormFields
         ];
     }
 
-    private static function uspsServices(): array
+    private static function uspsServices(bool $servicesEnabledByDefault): array
     {
         $services = new Services();
 
-        $helptip = __('This controls the title which the customer sees during checkout.', 'woo-usps-simple-shipping');
+        $helptip = __('This controls the title customers see on checkout.', 'woo-usps-simple-shipping');
 
         $fields = [];
         foreach ($services->families as $family) {
@@ -87,7 +87,7 @@ class FormFields
                 $fields["{$id}_$service->id"] = [
                     'label'   => $service->title,
                     'type'    => 'checkbox',
-                    'default' => 'yes',
+                    'default' => $servicesEnabledByDefault ? 'yes' : 'no',
                     'class'   => 'uspss-subservice-checkbox',
                 ];
             }

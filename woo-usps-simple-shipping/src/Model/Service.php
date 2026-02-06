@@ -2,10 +2,8 @@
 
 namespace Dgm\UspsSimple\Model;
 
-use Dgm\UspsSimple\Calc\Dim;
 
-
-abstract class Service
+class Service
 {
     /**
      * @var ServiceFamily
@@ -38,8 +36,4 @@ abstract class Service
         $this->id = $id;
         $this->title = $title;
     }
-
-    abstract public function matches(string $uspsCode, string $uspsTitle): bool;
-
-    abstract public function fits(Dim $dim): bool;
 }

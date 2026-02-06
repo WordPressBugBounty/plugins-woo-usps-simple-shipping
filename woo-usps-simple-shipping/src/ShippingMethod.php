@@ -32,13 +32,7 @@ class ShippingMethod extends \WC_Shipping_Method
      * @psalm-readonly
      */
     private $groupByWeight;
-
-    /**
-     * @var string
-     * @psalm-readonly
-     */
-    private $apiEndpoint = "https://secure.shippingapis.com/ShippingAPI.dll";
-
+        
     /**
      * @var string
      * @psalm-readonly
@@ -51,20 +45,26 @@ class ShippingMethod extends \WC_Shipping_Method
         add_action('woocommerce_settings_save_general', function() {
 
             $m = new self(0, true);
-            $serverOverride = (string)($m->settings['sender'] ?? '');
-            if ($serverOverride !== '') {
+            $sender = (string)($m->settings['sender'] ?? '');
+            if ($sender !== '') {
                 return;
             }
 
             $prevStorePostcode = get_option('woocommerce_store_postcode');
 
-            add_action('woocommerce_update_options_general', function() use ($prevStorePostcode) {
+            add_action('woocommerce_update_options_general', function() use($prevStorePostcode) {
                 $newStorePostcode = get_option('woocommerce_store_postcode');
                 if ($newStorePostcode !== $prevStorePostcode) {
                     WcTools::purgeShippingCache();
                 }
             });
         });
+    }
+
+    public static function hasSettingsStatic(): bool
+    {
+        $instance = new self(0, true);
+        return $instance->hasSettings();
     }
 
     /**
@@ -79,7 +79,7 @@ class ShippingMethod extends \WC_Shipping_Method
         $this->method_title = $this->title;
         $this->method_description = 'Shows live USPS domestic rates on checkout';
 
-        $this->form_fields = FormFields::build(self::defaultUserId);
+        $this->form_fields = FormFields::build($this->serviceEnabledByDefault());
         $this->init_settings();
         $s = $this->settings;
 
@@ -127,6 +127,7 @@ class ShippingMethod extends \WC_Shipping_Method
 
         foreach ($rates as $rate) {
             $rate['id'] = "$this->id:".strtoupper($rate['id']);
+            $rate['package'] = $package; // built-in shipping methods have package items visible in order dashboard
             $this->add_rate($rate);
         }
     }
@@ -180,14 +181,14 @@ class ShippingMethod extends \WC_Shipping_Method
 
         $cache = $debug->enabled() ? Cache::noop() : new Cache();
 
-        $calc = new Calc($this->apiEndpoint, $cache);
+        $calc = new Calc($cache);
 
         $services = new Services(
             function(string $familyId, string $title): string {
                 return ($this->settings["t_$familyId"] ?? "") ?: $title;
             },
             function(string $familyId, string $serviceId): bool {
-                return WcTools::yesNo2Bool($this->settings["{$familyId}_$serviceId"] ?? 'no');
+                return WcTools::yesNo2Bool($this->settings["{$familyId}_$serviceId"] ?? $this->serviceEnabledByDefault());
             },
             true
         );
@@ -200,7 +201,19 @@ class ShippingMethod extends \WC_Shipping_Method
         $request = new Request($this->apiUserId, $pkg, $services, $this->groupByWeight, $this->commercialRates);
         $debug->recordTheRequest($request);
 
-        return $calc->calc($request, $debug);
+        return $calc->calc($request);
+    }
+
+    private function hasSettings(): bool
+    {
+        return !!get_option($this->get_option_key());
+    }
+
+    private function serviceEnabledByDefault(): string
+    {
+        // All services are enabled for new installations.
+        // Services supported after installation are disabled by default.
+        return $this->hasSettings() ? 'no' : 'yes';
     }
 
     private static function logger(): \WC_Logger_Interface

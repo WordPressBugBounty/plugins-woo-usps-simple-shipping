@@ -1,80 +1,95 @@
 === USPS Simple Shipping for Woocommerce ===
+License: GPLv2 or later
 Contributors: dangoodman
-Tags: USPS, WooCommerce USPS Shipping, Live USPS rates
+Tags: USPS, USPS live rates, USPS WooCommerce, USPS shipping
 Requires PHP: 7.2
 Requires at least: 4.6
-Tested up to: 6.8
+Tested up to: 6.9
 WC requires at least: 5.0
-WC tested up to: 10.1
-Stable tag: 1.11.2
+WC tested up to: 10.4
+Stable tag: 1.16.0
 
 
-The USPS Simple plugin calculates rates for domestic shipping dynamically using the USPS API.
+USPS Simple calculates rates for domestic shipping dynamically using API.
 
 
 == Description ==
 
-USPS Simple integrates the US postal domestic service as a new shipping method in WooCommerce. The plugin retrieves real-time rates through the USPS API.
+**USPS Simple** is a free shipping plugin for WooCommerce that provides accurate, real-time USPS domestic rates to your customers. These rates are calculated based on the customer's shipping address and the size and weight of the items in their cart.
 
-By default, the plugin individually calculates the shipping price for each item in the cart, simulating separate shipments. The total price displayed to the customer is the sum of the individual item prices.
+By default, the plugin calculates the shipping price for each item individually, simulating separate shipments for each one. The total price shown to the customer is the sum of these individual item prices.
 
-For regular-sized items, there is an option to group them based on their weight. If this feature is enabled, the dimensions of the grouped items are disregarded in the calculation.
+For regular-sized items, there is an option to group them based on their weight. When this feature is enabled, the dimensions of the grouped items are disregarded in the rate calculation. This helps reduce the shipping cost for orders with many small items in the cart.
 
-To ensure compatibility, please set the WooCommerce currency to the US dollar and ensure that the base country is the USA.
+Fully functional right after installation.
 
+<br> <br>
+= Supported services =
 
-= USPS Simple supports the following services: =
-
-<ul>
-<li>Priority Mail Express</li>
-<li>Priority Mail Express, Hold for Pickup</li>
-<li>Priority Mail Express, Sunday/Holiday</li>
+**Priority Mail**
+— Regular non-flat rate — based on weight, size, and zone
+— Small Flat Rate Box
+— Medium Flat Rate Box — 1 (top-loading)
+— Medium Flat Rate Box — 2 (side-loading)
+— Large Flat Rate Box
 <br>
 
-<li>Priority Mail</li>
-<li>Priority Mail, Hold For Pickup</li>
-<li>Priority Mail Keys and IDs</li>
-<li>Priority Mail Regional Rate Box A</li>
-<li>Priority Mail Regional Rate Box A, Hold For Pickup</li>
-<li>Priority Mail Regional Rate Box B</li>
-<li>Priority Mail Regional Rate Box B, Hold For Pickup</li>
+**First-Class Mail**
+— Postcard
+— Letter
+— Large Envelope
 <br>
 
-<li>First-Class Mail Postcards</li>
-<li>First-Class Mail Stamped Postcards</li>
-<li>First-Class Mail Large Postcards</li>
-<li>First-Class Mail Letter</li>
-<li>First-Class Mail Metered Letter</li>
-<li>First-Class Mail Large Envelope</li>
+**USPS Ground Advantage**
 <br>
 
-<li>USPS Ground Advantage</li>
-<br>
-
-<li>USPS Retail Ground</li>
-<br>
-
-<li>Media Mail Parcel</li>
-<br>
-
-<li>Library Mail Parcel</li>
-</ul>
+**Media Mail**
+**Library Mail**
 
 
 == Installation ==
 
-1. Upload the plugin folder to the '/wp-content/plugins/' directory.
+1. Upload the plugin folder to the /wp-content/plugins/ directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Now you need configure the plugin: Enter your postcode and check option "Enable this shipping method". You can use the default User ID or enter yours.
+3. Go to WooCommerce > Settings > Shipping > USPS Simple to configure the plugin.
 
 
 == Screenshots ==
 
 1. Configuration
-2. Cart
 
 
 == Changelog ==
+
+= 1.16.0 =
+* Support regular Priority Mail based on weight, size, and zone.
+* Turn on all services by default for new installations.
+
+= 1.15.0 =
+* Support Priority Mail flat rate boxes.
+* Don't show the retirement notice to new users.
+
+= 1.14.0 =
+* Remove unsupported options: commercial rates, Priority Mail, Priority Mail Express, Retail Ground.
+* Stop displaying the retirement notice every 24 hours.
+
+= 1.13.2 =
+* Don't try updating the retirement notice when regular users are viewing the site.
+
+= 1.13.1 =
+* Fix: apply the new API based on the Commercial Rates option instead of Packing.
+
+= 1.13.0 =
+* Switch retail Ground Advantage, First-Class Mail, Media Mail, and Library Mail to the new API.
+* Add the notice regarding WebTools API retirement, commercial rates, Priority Mail, and Retail Ground.
+* Tested with WordPress 6.9, WooCommerce 10.4.
+
+= 1.12.0 =
+* Save shipped items in order shipping details.
+* Tested with WooCommerce 10.3.
+
+= 1.11.3 =
+* Tested with WooCommerce 10.2.
 
 = 1.11.2 =
 * Tested with WooCommerce 10.1.
@@ -125,7 +140,7 @@ To ensure compatibility, please set the WooCommerce currency to the US dollar an
 
 = 1.9.4 =
 * Tested with WordPress 6.4, WooCommerce 8.3.
-* Raise the min required WooCommerce version to 5.0.
+* Raise the min-required WooCommerce version to 5.0.
 
 = 1.9.3 =
 * Tested with WooCommerce 8.1.
@@ -173,8 +188,8 @@ To ensure compatibility, please set the WooCommerce currency to the US dollar an
 * Workaround a USPS API error for items less than 0.25 inch.
 * Check shipped items dimensions against the First-Class Mail size constraints (if 'Quote regular items by weight' is disabled).
 * Avoid an additional call to the USPS API if Retail Ground is disabled.
-* Fill the shipping origin postcode from Store Address by default.
-* Enable the plugin upon install.
+* Fill the shipping origin zip code from Store Address by default.
+* Enable the plugin upon installation.
 * Remove the '(USPS Simple)' delivery option label suffix.
 * Require PHP 7.2+.
 * Tested with WooCommerce 6.7.
@@ -215,7 +230,7 @@ To ensure compatibility, please set the WooCommerce currency to the US dollar an
 * Refactor USPS API response handling a bit.
 
 = 1.5.0 =
-* Check prerequisites on load, in a user-friendly way.
+* Check prerequisites on boot, in a user-friendly way.
 
 = 1.4.0 =
 * Replace the deprecated WC_Product->length/width/height properties access with get_XXX() calls.
@@ -239,7 +254,7 @@ To ensure compatibility, please set the WooCommerce currency to the US dollar an
 
 = 1.2.5 =
 * Fix First-Class Mail Parcel price calculator.
-* Added First-Class Mail Large Envelope, Letter and Postcards.
+* Added First-Class Mail Large Envelope, Letter, and Postcards.
 
 = 1.2.4 =
 * API Request updated

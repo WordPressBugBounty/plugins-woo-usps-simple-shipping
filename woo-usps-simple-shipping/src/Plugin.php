@@ -42,12 +42,44 @@ class Plugin {
         self::registerShippingMethod();
         ShippingMethod::handleStorePostcodeChange();
         self::registerPluginActionLink($pluginFile);
+        self::displayRetirementNotice();
     }
 
     /**
      * @var self
      */
     private static $instance;
+
+    private static function displayRetirementNotice(): void
+    {
+        $noticeId = 'uspssimple-retirement-notice';
+
+        if (!ShippingMethod::hasSettingsStatic()) {
+            set_site_transient($noticeId, true, 86400*365);
+            return;
+        }
+
+        DismissibleNotices::init();
+
+        add_action('admin_notices', function() use($noticeId) {
+
+            if (DismissibleNotices::dismissed($noticeId)) {
+                return;
+            }
+
+            $contentKey = 'uspssimple-retirement-notice-content';
+            $content = get_transient($contentKey);
+            if (!$content) {
+                $content = file_get_contents('https://uspsapi.aikinomi.io/retirement');
+                if (!$content) {
+                    $content = defaultRetirementNotice;
+                }
+                set_transient($contentKey, $content, 3*3600);
+            }
+
+            echo $content;
+        });
+    }
 
     /** @noinspection PhpSameParameterValueInspection */
     private static function shippingUrl(string $section = null): string
@@ -101,3 +133,29 @@ class Plugin {
         });
     }
 }
+
+const defaultRetirementNotice = '
+	<div class="notice notice-error is-dismissible" data-dismissible="uspssimple-retirement-notice"  style="max-width: 40em">
+		<h2>USPS WebTools API Retirement — 25 January 2026</h2>
+		<p>
+			USPS Simple calculated online shipping rates using the USPS WebTools API,
+			which was <b>shut down</b> on 25 January 2026. For more information, please refer to the
+			official announcement on usps.com.
+		</p>
+		<p>
+			As of this date, USPS Simple stopped providing
+			Priority Mail Express and Retail Ground options to your customers.
+		</p>
+		<p>
+			Priority Mail, First-Class Mail, Ground Advantage, Media Mail, and Library Mail switched to
+			<b>retail rates</b>, but otherwise continued working as usual.
+		</p>
+		<p>
+			No action is required if you didn\'t use commercial rates, Priority Mail Express, or Retail Ground. Otherwise,
+			please consider replacing them with custom shipping rules (see
+            <a target="_blank" href="https://wordpress.org/plugins/weight-based-shipping-for-woocommerce/">Weight Based Shipping</a> or
+			<a target="_blank" href="https://tablerateshipping.com/">Tree Table Rate Shipping</a>),
+			using a custom code snippet, or switching to a different plugin that provides live USPS rates.
+		</p>
+	</div>
+';
