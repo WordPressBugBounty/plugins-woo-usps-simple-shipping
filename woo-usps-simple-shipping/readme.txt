@@ -6,8 +6,8 @@ Requires PHP: 7.2
 Requires at least: 4.6
 Tested up to: 6.9
 WC requires at least: 5.0
-WC tested up to: 10.4
-Stable tag: 1.16.0
+WC tested up to: 10.5
+Stable tag: 1.17.0
 
 
 USPS Simple calculates rates for domestic shipping dynamically using API.
@@ -23,7 +23,6 @@ For regular-sized items, there is an option to group them based on their weight.
 
 Fully functional right after installation.
 
-<br> <br>
 = Supported services =
 
 **Priority Mail**
@@ -60,6 +59,10 @@ Fully functional right after installation.
 
 
 == Changelog ==
+
+= 1.17.0 =
+* Fix new services always appear enabled in settings.
+* Tested with WooCommerce 10.5.
 
 = 1.16.0 =
 * Support regular Priority Mail based on weight, size, and zone.
@@ -211,7 +214,7 @@ Fully functional right after installation.
 = 1.5.6 =
 * Replace the default USPS API user id to fix the authorization issue.
 * Tested with WooCommerce 5.6.
-* Fix the debug info drawer won't expand after cart update.
+* Fix the debug info drawer won't expand after the cart update.
 
 = 1.5.5 =
 * Tested with WooCommerce 5.6.
@@ -270,7 +273,7 @@ Fully functional right after installation.
 * Rebranding of Standard Post as Retail Ground.
 
 = 1.2.1 =
-* Fix - warning message in cart.
+* Fix warning messages in the cart.
 
 = 1.2.0 =
 * Added services:

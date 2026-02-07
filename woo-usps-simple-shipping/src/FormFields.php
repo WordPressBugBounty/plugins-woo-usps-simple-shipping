@@ -1,14 +1,12 @@
-<?php
-
+<?php declare(strict_types=1);
 namespace Dgm\UspsSimple;
-
 
 use Dgm\UspsSimple\Model\Services;
 
 
 class FormFields
 {
-    public static function build(bool $servicesEnabledByDefault): array
+    public static function build(string $servicesEnabledByDefault): array
     {
         return self::options() + self::uspsServices($servicesEnabledByDefault);
     }
@@ -59,7 +57,7 @@ class FormFields
         ];
     }
 
-    private static function uspsServices(bool $servicesEnabledByDefault): array
+    private static function uspsServices(string $servicesEnabledByDefault): array
     {
         $services = new Services();
 
@@ -87,7 +85,7 @@ class FormFields
                 $fields["{$id}_$service->id"] = [
                     'label'   => $service->title,
                     'type'    => 'checkbox',
-                    'default' => $servicesEnabledByDefault ? 'yes' : 'no',
+                    'default' => $servicesEnabledByDefault,
                     'class'   => 'uspss-subservice-checkbox',
                 ];
             }
