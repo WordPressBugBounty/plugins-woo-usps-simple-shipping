@@ -61,12 +61,6 @@ class ShippingMethod extends \WC_Shipping_Method
         });
     }
 
-    public static function hasSettingsStatic(): bool
-    {
-        $instance = new self(0, true);
-        return $instance->hasSettings();
-    }
-
     /**
      * @noinspection MagicMethodsValidityInspection No need to call the parent constructor.
      * @noinspection PhpMissingParentConstructorInspection No need to call the parent constructor.
@@ -77,7 +71,7 @@ class ShippingMethod extends \WC_Shipping_Method
         $this->id = Plugin::WOO_ID;
         $this->title = 'USPS Simple';
         $this->method_title = $this->title;
-        $this->method_description = 'Shows live USPS domestic rates on checkout';
+        $this->method_description = 'Provides live USPS domestic rates on checkout';
 
         $this->form_fields = FormFields::build($this->serviceEnabledByDefault());
         $this->init_settings();

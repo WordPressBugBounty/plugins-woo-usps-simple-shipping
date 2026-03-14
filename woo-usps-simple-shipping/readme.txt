@@ -6,11 +6,11 @@ Requires PHP: 7.2
 Requires at least: 4.6
 Tested up to: 6.9
 WC requires at least: 5.0
-WC tested up to: 10.5
-Stable tag: 1.17.0
+WC tested up to: 10.6
+Stable tag: 1.18.0
 
 
-USPS Simple calculates rates for domestic shipping dynamically using API.
+USPS Simple provides real-time USPS domestic rates.
 
 
 == Description ==
@@ -59,6 +59,10 @@ Fully functional right after installation.
 
 
 == Changelog ==
+
+= 1.18.0 =
+* Remove the retirement notice.
+* Tested with WooCommerce 10.6.
 
 = 1.17.0 =
 * Fix new services always appear enabled in settings.

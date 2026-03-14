@@ -4,7 +4,7 @@
 
 namespace Dgm\UspsSimple\Vendors\Composer\Autoload;
 
-class ComposerStaticInitc0b343f906ee2a96ac0e67ff24e00795
+class ComposerStaticInit13ebb731cfe8ba8c344774ab127e4af6
 {
     public static $prefixLengthsPsr4 = array (
         'D' => 
@@ -29,9 +29,9 @@ class ComposerStaticInitc0b343f906ee2a96ac0e67ff24e00795
     public static function getInitializer(\Dgm\UspsSimple\Vendors\Composer\Autoload\ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = \Dgm\UspsSimple\Vendors\Composer\Autoload\ComposerStaticInitc0b343f906ee2a96ac0e67ff24e00795::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = \Dgm\UspsSimple\Vendors\Composer\Autoload\ComposerStaticInitc0b343f906ee2a96ac0e67ff24e00795::$prefixDirsPsr4;
-            $loader->classMap = \Dgm\UspsSimple\Vendors\Composer\Autoload\ComposerStaticInitc0b343f906ee2a96ac0e67ff24e00795::$classMap;
+            $loader->prefixLengthsPsr4 = \Dgm\UspsSimple\Vendors\Composer\Autoload\ComposerStaticInit13ebb731cfe8ba8c344774ab127e4af6::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = \Dgm\UspsSimple\Vendors\Composer\Autoload\ComposerStaticInit13ebb731cfe8ba8c344774ab127e4af6::$prefixDirsPsr4;
+            $loader->classMap = \Dgm\UspsSimple\Vendors\Composer\Autoload\ComposerStaticInit13ebb731cfe8ba8c344774ab127e4af6::$classMap;
 
         }, null, \Dgm\UspsSimple\Vendors\Composer\Autoload\ClassLoader::class);
     }
