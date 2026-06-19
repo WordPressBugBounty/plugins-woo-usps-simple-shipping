@@ -4,10 +4,10 @@ Contributors: dangoodman
 Tags: USPS, USPS live rates, USPS WooCommerce, USPS shipping
 Requires PHP: 7.2
 Requires at least: 4.6
-Tested up to: 6.9
+Tested up to: 7.0
 WC requires at least: 5.0
-WC tested up to: 10.7
-Stable tag: 1.18.1
+WC tested up to: 10.8
+Stable tag: 1.18.2
 
 
 USPS Simple provides real-time USPS domestic rates.
@@ -59,6 +59,9 @@ Fully functional right after installation.
 
 
 == Changelog ==
+
+= 1.18.2 =
+* Tested with WordPress 7.0, WooCommerce 10.8.
 
 = 1.18.1 =
 * Tested with WooCommerce 10.7.

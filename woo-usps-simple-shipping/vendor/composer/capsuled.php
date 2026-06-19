@@ -6,9 +6,9 @@
       'Dgm\\WcTools\\WcTools' => 'Dgm\\UspsSimple\\Vendors\\Dgm\\WcTools\\WcTools',
       'DgmWpPluginBootstrapGuard' => 'Dgm_UspsSimple_Vendors_DgmWpPluginBootstrapGuard',
       'DgmWpDismissibleNotices' => 'Dgm_UspsSimple_Vendors_DgmWpDismissibleNotices',
-      'Composer\\Autoload\\ComposerStaticInitabcd6278cfc3462002da6441bd38781c' => 'Dgm\\UspsSimple\\Vendors\\Composer\\Autoload\\ComposerStaticInitabcd6278cfc3462002da6441bd38781c',
+      'Composer\\Autoload\\ComposerStaticInitbceaccde5fb452fb318a084a8bfc6bc4' => 'Dgm\\UspsSimple\\Vendors\\Composer\\Autoload\\ComposerStaticInitbceaccde5fb452fb318a084a8bfc6bc4',
       'Composer\\Autoload\\ClassLoader' => 'Dgm\\UspsSimple\\Vendors\\Composer\\Autoload\\ClassLoader',
-      'ComposerAutoloaderInitabcd6278cfc3462002da6441bd38781c' => 'Dgm_UspsSimple_Vendors_ComposerAutoloaderInitabcd6278cfc3462002da6441bd38781c',
+      'ComposerAutoloaderInitbceaccde5fb452fb318a084a8bfc6bc4' => 'Dgm_UspsSimple_Vendors_ComposerAutoloaderInitbceaccde5fb452fb318a084a8bfc6bc4',
     ),
     'func' => 
     array (
@@ -24,9 +24,9 @@
       'Dgm\\UspsSimple\\Vendors\\Dgm\\WcTools\\WcTools' => 'Dgm\\WcTools\\WcTools',
       'Dgm_UspsSimple_Vendors_DgmWpPluginBootstrapGuard' => 'DgmWpPluginBootstrapGuard',
       'Dgm_UspsSimple_Vendors_DgmWpDismissibleNotices' => 'DgmWpDismissibleNotices',
-      'Dgm\\UspsSimple\\Vendors\\Composer\\Autoload\\ComposerStaticInitabcd6278cfc3462002da6441bd38781c' => 'Composer\\Autoload\\ComposerStaticInitabcd6278cfc3462002da6441bd38781c',
+      'Dgm\\UspsSimple\\Vendors\\Composer\\Autoload\\ComposerStaticInitbceaccde5fb452fb318a084a8bfc6bc4' => 'Composer\\Autoload\\ComposerStaticInitbceaccde5fb452fb318a084a8bfc6bc4',
       'Dgm\\UspsSimple\\Vendors\\Composer\\Autoload\\ClassLoader' => 'Composer\\Autoload\\ClassLoader',
-      'Dgm_UspsSimple_Vendors_ComposerAutoloaderInitabcd6278cfc3462002da6441bd38781c' => 'ComposerAutoloaderInitabcd6278cfc3462002da6441bd38781c',
+      'Dgm_UspsSimple_Vendors_ComposerAutoloaderInitbceaccde5fb452fb318a084a8bfc6bc4' => 'ComposerAutoloaderInitbceaccde5fb452fb318a084a8bfc6bc4',
     ),
     'func' => 
     array (
