@@ -6,8 +6,8 @@ Requires PHP: 7.2
 Requires at least: 4.6
 Tested up to: 7.1
 WC requires at least: 5.0
-WC tested up to: 11.2
-Stable tag: 1.18.4
+WC tested up to: 11.3
+Stable tag: 1.18.5
 
 
 USPS Simple provides real-time USPS domestic rates.
@@ -59,6 +59,9 @@ Fully functional right after installation.
 
 
 == Changelog ==
+
+= 1.18.5 =
+* Tested with WooCommerce 11.3.
 
 = 1.18.4 =
 * Tested with WooCommerce 11.2.
